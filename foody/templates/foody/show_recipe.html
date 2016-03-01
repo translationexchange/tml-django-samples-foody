@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load tml %}
+{% load tml_inline %}
+{% block content %}
+    <div class="content">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-10 col-md-offset-1">
+            <div class="row">
+              <div class="col-lg-6 col-sm-7">
+                <a class="back-btn" href="/">{% tr %}Back{% endtr %} </a>
+                <div class="recipe">
+                  <h2>
+                    {% trl recipe.name %}
+                  </h2>
+                  <h5>
+                    {% tr %}Preparation{% endtr %}
+                  </h5>
+                  <p>
+                    {% trl recipe.preparation %}
+                  </p>
+                  <hr>
+                  <h5>
+                    {% tr %}Directions{% endtr %}
+                  </h5>
+                  <ol>
+                    {% for direction in recipe.directions_set.all %}
+                      <li>
+                        <p>
+                          {% trl direction.description %}
+                        </p>
+                      </li>
+                    {% endfor %}
+                  </ol>
+                </div>
+              </div>
+              <div class="col-sm-5 col-lg-offset-1">
+                <div class="panel panel-default">
+                    {% if 'http://' in recipe.image %}
+                        <img class="img-responsive" src="{{recipe.image}}"/>
+                    {% else %}
+                        <img class="img-responsive" src="/static/images/{{recipe.image}}"/>
+                    {% endif %}
+                  <div class="panel-body">
+                    <h5>
+                      {% tr %}Ingredient List{% endtr %}
+                    </h5>
+                    <table class="table recipe-table">
+                      <tbody>
+                        {% for ingredient in recipe.ingredients_set.all %}
+                            <tr>
+                                <td>
+                                    {% if ingredient.measurements %}
+                                        <strong>{{ingredient.quantity}} {{ingredient.measurements}}</strong> of {{ingredient.name}}
+                                    {% else %}
+                                        <strong>{{ingredient.quantity}}</strong> {{ingredient.name}}
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+                <div class="row text-right" style="padding:0px 15px;">
+                    <a class="btn btn-default btn-sm" href="/recipe/update/{{recipe.id}}">{% tr %}Update{% endtr %} </a>
+                    <a class="btn btn-default btn-sm" href="/recipe/delete/{{recipe.id}}" onclick="deleteRecipe()">{% tr %}Delete{% endtr %} </a>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+        function deleteRecipe() {
+            if (!confirm({% tr %}"Are you sure you want to delete this recipe?"{% endtr %} )) return;
+            location = '/recipe/delete/{{recipe.id}}';
+        }
+    </script>
+{% endblock %}

@@ -1,0 +1,5 @@
+Django==1.9.2
+wsgiref==0.1.2
+-e git+https://Rustem:f1b0nacc1@github.com/translationexchange/tml-python-django.git@a5dbc773e59b5691971f54c775d2b88f72fc07b6#egg=django_tml
+te
+logs
