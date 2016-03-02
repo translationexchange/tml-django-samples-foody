@@ -12,13 +12,13 @@
                 <a class="back-btn" href="/">{% tr %}Back{% endtr %} </a>
                 <div class="recipe">
                   <h2>
-                    {% trl recipe.name %}
+                    {% trs recipe.name %}
                   </h2>
                   <h5>
                     {% tr %}Preparation{% endtr %}
                   </h5>
                   <p>
-                    {% trl recipe.preparation %}
+                    {% trs recipe.preparation %}
                   </p>
                   <hr>
                   <h5>
@@ -28,7 +28,7 @@
                     {% for direction in recipe.directions_set.all %}
                       <li>
                         <p>
-                          {% trl direction.description %}
+                          {% trs direction.description %}
                         </p>
                       </li>
                     {% endfor %}

@@ -127,19 +127,19 @@ TML = {
     'environment': 'dev',
     'application': {'key': 'e76ba38d2ba022d1095217cfa5d1832b5c7216fff87c5b62bdcc5c73534e316f'},
     'monkeypatch': True,
-    'cache': {
-        'enabled': True,
-        'adapter': 'memcached',
-        'backend': 'pylibmc',
-        'namespace': 'foody'
-    },
     # 'cache': {
     #     'enabled': True,
-    #     'adapter': 'file',
-    #     'version': '20160301045157',
-    #     'path': pj(BASE_DIR, 'tml/cache')
-    #    # 'path': pj(os.path.dirname(BASE_DIR), 'tests/fixtures/snapshot.tar.gz')
+    #     'adapter': 'memcached',
+    #     'backend': 'pylibmc',
+    #     'namespace': 'foody'
     # },
+    'cache': {
+        'enabled': True,
+        'adapter': 'file',
+        'version': '20160301181847',
+        'path': pj(BASE_DIR, 'tml/cache')
+       # 'path': pj(os.path.dirname(BASE_DIR), 'tests/fixtures/snapshot.tar.gz')
+    },
     'agent': {
         'enabled': True,
         'type':    'agent',

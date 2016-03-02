@@ -17,18 +17,18 @@
             {% tr %}The Best in International Food{% endtr %}
             </h1>
             <p>
-              {% tr %}Food from around the world{% endtr %}
+              {% trs "Food from around the world" %}
             </p>
           </div>
         </div>
-        <div data-spy="affix" data-offset-top="480" class="recipe-nav">
+        <div title="{% trs "Title" nowrap %}" data-spy="affix" data-offset-top="480" class="recipe-nav">
           <div class="container text-centered">
             {% tmlopts with source="navigation" %}
             <div id="nav-categories">
               <ul class="nav nav-tabs">
                 {% for item in categories %}
                 {% if item.recipes_set.all %}
-                  <li><a href="#{{item.key}}">{% trl item.name %}</a></li>
+                  <li><a href="#{{item.key}}">{% trs item.name %}</a></li>
                   {% endif %}
                 {% endfor %}
               </ul>
@@ -46,7 +46,7 @@
               <a id="{{item.key}}" class="anchor">&nbsp;</a>
               <div class="page-header">
                 <h3>
-                    {% trl item.name %}
+                    {% trs item.name %}
                 </h3>
               </div>
               <div class="row">
@@ -62,10 +62,10 @@
                                     {% endif %}
                                     <div class="panel-body">
                                         <h4>
-                                            {% trl recipe.name %}
+                                            {% trs recipe.name %}
                                         </h4>
                                         <p>
-                                            {% trl recipe.description %}
+                                            {% trs recipe.description %}
                                         </p>
                                     </div>
                                 </a>
