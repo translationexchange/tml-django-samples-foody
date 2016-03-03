@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+{% load i18n %}
+{% load tml %}
+{% load tml_inline %}
+
+<html >
+    <head>
+        <meta http-equiv="content-type"  content="application/xhtml+xml; charset=UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="chrome=1">
+        <meta name="google" content="notranslate">
+
+        <title>Foody</title>
+
+        <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+
+        <link rel='stylesheet' href="http://fonts.googleapis.com/css?family=Roboto:400,300,500,700" />
+
+        {% block stylesheets %}
+            <link rel='stylesheet' href="/static/css/bootstrap.min.css" />
+            <link rel='stylesheet' href="/static/css/style.css"/>
+        {% endblock %}
+        {% tml_inline_header %}
+
+    </head>
+
+    <body data-spy='scroll' data-target='#nav-categories'>
+        <div class="navbar navbar-default">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">{% trs "Toggle navigation" %}</span>
+                <span class="icon-bar"></span> <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="/"><strong>{% tr %}Foody{% endtr %}</strong></a>
+            </div>
+            <div data-tml-language-selector="sideflags"></div>
+            <div class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+              </ul>
+
+              <!-- <div class="nav navbar-right navbar-text">
+                <%= tml_language_selector_tag(:sideflags, toggle: true) %>
+              </div> -->
+
+              <ul class="nav navbar-nav navbar-right">
+                <li><a href="/recipe/create">{% tr %}Add Recipe{% endtr %}</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        {% block main %}
+        {% endblock %}
+
+        {% block content %}
+        <div class="content">
+
+        </div>
+        {% endblock %}
+
+        <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-8">
+              {% source "base" %}
+                {% source "layout/footer" %}
+                {% tr with company="Foody" %}[b:About {company}]{% endtr %}
+                <p>
+                  {% tr trimmed with company="Translation Exchange" link="https://github.com/translationexchange" %}
+                    Fooody was built to demonstrate the {company} Localization Platform. The source code is available on our [link:Github Account]
+                  {% endtr %}
+                </p>
+                {% endsource %}
+              {% endsource %}
+            </div>
+            <div class="col-md-4 text-right">Translation Exchange, Inc</div>
+          </div>
+        </div>
+      </footer>
+
+    </body>
+
+</html>

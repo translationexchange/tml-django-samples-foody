@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load tml %}
+{% load tml_inline %}
+
+{% block main %}
+    <style>
+        .jumbotron {
+          background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url("/static/images/heros/{{ran|random}}.jpg") center center no-repeat;
+        }
+        </style>
+        {% source "header" %}
+        <div class="jumbotron text-center">
+          <div class="overlay"></div>
+          <div class="container">
+            <h1>
+            {% trs "The Best in International Food" %}
+            </h1>
+            <p>
+              {% trs "Food from around the world" %}
+            </p>
+          </div>
+        </div>
+        {% endsource %}
+        <div title="{% trs "Title" nowrap %}" data-spy="affix" data-offset-top="480" class="recipe-nav">
+          <div class="container text-centered">
+            {% source "navigation" %}
+            <div id="nav-categories">
+              <ul class="nav nav-tabs">
+                {% for item in categories %}
+                {% if item.recipes_set.all %}
+                  <li><a href="#{{item.key}}">{% trs item.name %}</a></li>
+                  {% endif %}
+                {% endfor %}
+              </ul>
+            </div>
+            {% endsource %}
+          </div>
+        </div>
+{% endblock %}
+
+{% block content %}
+    <div data-title="{% trs "Some title" nowrap %}" class="content">
+          <div class="container">
+            {% for item in categories %}
+            {% if item.recipes_set.all %}
+              <a id="{{item.key}}" class="anchor">&nbsp;</a>
+              <div class="page-header">
+                <h3>
+                    {% trs item.name %}
+                </h3>
+              </div>
+              <div class="row">
+                  <div class="col-lg-10 col-lg-offset-1">
+                    <div class="row">
+                      {% for recipe in item.recipes_set.all %}
+                          <div class="col-lg-4 col-md-6">
+                                <a class="panel panel-default recipe-thumbnail" href="/recipe/show/{{recipe.id}}">
+                                    {% if 'http://' in recipe.image %}
+                                        <img class="img-responsive" src="{{recipe.image}}"/>
+                                    {% else %}
+                                        <img class="img-responsive" src="/static/images/{{recipe.image}}"/>
+                                    {% endif %}
+                                    <div class="panel-body">
+                                        <h4>
+                                            {% trs recipe.name %}
+                                        </h4>
+                                        <p>
+                                            {% trs recipe.description %}
+                                        </p>
+                                    </div>
+                                </a>
+                          </div>
+                      {% endfor %}
+                    </div>
+                  </div>
+                </div>
+                {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+{% endblock %}
