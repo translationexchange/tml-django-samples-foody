@@ -4,12 +4,8 @@ import json
 from django import forms
 from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
+from django_tml.fields import TmlModelChoiceField
 from . import models
-
-
-class TransModelChoiceField(forms.ModelChoiceField):
-    def label_from_instance(self, obj):
-        return _(super(TransModelChoiceField, self).label_from_instance(obj))
 
 
 class CreateRecipeForm(forms.Form):
@@ -23,7 +19,7 @@ class CreateRecipeForm(forms.Form):
     image = forms.CharField(widget=forms.TextInput(attrs={
             'class': 'form-control',
             'placeholder': _('Image Url')}), required=False)
-    categories = TransModelChoiceField(queryset=models.Categories.objects.all(),
+    categories = TmlModelChoiceField(queryset=models.Categories.objects.all(),
                                         widget=forms.Select(attrs={'class': 'form-control', 'onChange': 'verifyCategory(this)'}),
                                         required=False)
 
@@ -117,7 +113,7 @@ class UpdateRecipeForm(forms.Form):
     image = forms.CharField(widget=forms.TextInput(attrs={
             'class': 'form-control',
             'placeholder': _('Image Url')}), required=False)
-    categories = TransModelChoiceField(queryset=models.Categories.objects.all(),
+    categories = TmlModelChoiceField(queryset=models.Categories.objects.all(),
                                         widget=forms.Select(attrs={'class': 'form-control', 'onChange': 'verifyCategory(this)'}),
                                         required=False)
 
