@@ -1,3 +1,3 @@
 Django==1.9.2
 wsgiref==0.1.2
--e git+https://github.com/translationexchange/tml-python-django.git@b6d659ed0eff48ddfca9c0a7c4e14d701b2e3e3c#egg=django_tml
+django_tml>=0.1.0
