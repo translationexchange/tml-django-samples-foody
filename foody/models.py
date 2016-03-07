@@ -12,8 +12,8 @@ class Categories(models.Model):
     name = models.TextField(blank=True, null=True)  # This field type is a guess.
     locale = models.TextField(blank=True, null=True)  # This field type is a guess.
     featured_index = models.IntegerField(blank=True, null=True)
-    created_at = models.DateTimeField(default=timezone.now())
-    updated_at = models.DateTimeField(default=timezone.now())
+    created_at = models.DateTimeField(default=timezone.now)
+    updated_at = models.DateTimeField(default=timezone.now)
 
     class Meta:
         managed = False
@@ -44,8 +44,8 @@ class Recipes(models.Model):
     image = models.TextField(blank=True, null=True)  # This field type is a guess.
     preparation = models.TextField(blank=True, null=True)
     featured_index = models.IntegerField(blank=True, null=True)
-    created_at = models.DateTimeField(default=timezone.now())
-    updated_at = models.DateTimeField(default=timezone.now())
+    created_at = models.DateTimeField(default=timezone.now)
+    updated_at = models.DateTimeField(default=timezone.now)
 
     class Meta:
         managed = False
@@ -78,8 +78,8 @@ class Ingredients(models.Model):
     name = models.TextField(blank=True, null=True)  # This field type is a guess.
     measurements = models.TextField(blank=True, null=True)  # This field type is a guess.
     index = models.IntegerField(blank=True, null=True)
-    created_at = models.DateTimeField(default=timezone.now())
-    updated_at = models.DateTimeField(default=timezone.now())
+    created_at = models.DateTimeField(default=timezone.now)
+    updated_at = models.DateTimeField(default=timezone.now)
 
     class Meta:
         managed = False
@@ -90,8 +90,8 @@ class Directions(models.Model):
     recipe = models.ForeignKey(Recipes, on_delete=models.CASCADE)
     description = models.TextField(blank=True, null=True)
     index = models.IntegerField(blank=True, null=True)
-    created_at = models.DateTimeField(default=timezone.now())
-    updated_at = models.DateTimeField(default=timezone.now())
+    created_at = models.DateTimeField(default=timezone.now)
+    updated_at = models.DateTimeField(default=timezone.now)
 
     class Meta:
         managed = False
