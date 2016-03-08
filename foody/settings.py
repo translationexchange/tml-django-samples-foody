@@ -125,7 +125,8 @@ STATIC_URL = '/static/'
 
 TML = {
     'environment': 'dev',
-    'application': {'key': 'e76ba38d2ba022d1095217cfa5d1832b5c7216fff87c5b62bdcc5c73534e316f'},
+    'application': {'key': 'e76ba38d2ba022d1095217cfa5d1832b5c7216fff87c5b62bdcc5c73534e316f',
+    'path': 'https://staging-api.translationexchange.com', 'cdn_path': 'http://trex-snapshots.s3-us-west-1.amazonaws.com'},
     'monkeypatch': True,
     'cache': {
         'enabled': True,
