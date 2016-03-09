@@ -132,7 +132,7 @@ TML = {
         'enabled': True,
         'adapter': 'memcached',
         'backend': 'pylibmc',
-        'namespace': 'foody'
+        #'namespace': 'foody'
     },
     # 'cache': {
     #     'enabled': True,
