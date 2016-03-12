@@ -18,7 +18,12 @@ Add the following dependency to your pom.xml:
 ```bash
 $ virtualenv --no-site-packages foody
 $ pip install -r requirements.txt
+$ python manage.py runserver localhost:8000
 ```
+
+Configuration
+==================
+
 
 
 
