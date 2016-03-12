@@ -2,7 +2,7 @@
   <img src="https://avatars0.githubusercontent.com/u/1316274?v=3&s=200">
 </p>
 
-Django Sample Application
+Foody - Django Sample Application
 ==================
 
 This sample application demonstates how to setup, configure and use TML Django SDK in a web application. 
