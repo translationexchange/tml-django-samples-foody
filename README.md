@@ -16,7 +16,8 @@ Installation
 Add the following dependency to your pom.xml:
 
 ```bash
-$ virtualenv --no-site-packages foody
+$ virtualenv --no-site-packages foody_env
+$ . ./foody_env/bin/activate
 $ pip install -r requirements.txt
 $ python manage.py runserver localhost:8000
 ```
