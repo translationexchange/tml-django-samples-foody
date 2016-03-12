@@ -24,7 +24,33 @@ $ python manage.py runserver localhost:8000
 Configuration
 ==================
 
+To be able to manage and translate the application yourself, you should create your own account on Translation Exchange, register a new application and use the application key in this sample. 
 
+To update the application key, edit "foody/settings.py" file and replace YOUR_APPLICATION_KEY with the key from your application.
+
+```python
+TML = {
+    'environment': 'dev',
+    'application': {
+       'key': 'YOUR_APPLICATION_KEY'
+      },
+    'monkeypatch': True,
+    'cache': {
+        'enabled': True,
+        'adapter': 'memcached',
+        'backend': 'pylibmc'
+    },
+    'data_preprocessors': ('tml.tools.list.preprocess_lists',),
+    'env_generators': ('tml.tools.viewing_user.get_viewing_user',),
+    'logger': {
+        'path': pj(BASE_DIR, 'logs', 'tml.log')
+    }
+}
+```
+
+To learn more about all of the configuration options, please visit:
+
+http://docs.translationexchange.com/django-quickstart/
 
 
 Links
