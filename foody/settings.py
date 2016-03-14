@@ -150,5 +150,6 @@ TML = {
     'env_generators': ('tml.tools.viewing_user.get_viewing_user',),
     'logger': {
         'path': pj(BASE_DIR, 'logs', 'tml.log')
-    }
+    },
+    'strict_mode': True   # reraise exception rather than silent 
 }
