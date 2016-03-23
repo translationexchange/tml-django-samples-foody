@@ -107,7 +107,7 @@ DATABASES = {
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en'
 
 TIME_ZONE = 'UTC'
 
@@ -131,11 +131,12 @@ TML = {
         'cdn_path': 'http://trex-snapshots.s3-us-west-1.amazonaws.com'},
     'monkeypatch': True,
     'cache': {
-        'enabled': True,
+        'enabled': False,
         'adapter': 'memcached',
         'backend': 'pylibmc',
-        #'namespace': 'foody'
+        'namespace': 'foody'
     },
+    'locale': {'subdomain': True, 'query_param': 'lang'},
     # 'cache': {
     #     'enabled': True,
     #     'adapter': 'file',
