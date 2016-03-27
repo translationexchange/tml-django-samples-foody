@@ -50,7 +50,8 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django_tml.middleware.TmlControllerMiddleware'
+    'django_tml.middleware.TmlControllerMiddleware',
+    'django_tml.middleware.InjectAgentMiddleware'
 ]
 
 ROOT_URLCONF = 'foody.urls'
@@ -130,23 +131,24 @@ TML = {
         'path': 'https://staging-api.translationexchange.com',
         'cdn_path': 'http://trex-snapshots.s3-us-west-1.amazonaws.com'},
     'monkeypatch': True,
-    'cache': {
-        'enabled': False,
-        'adapter': 'memcached',
-        'backend': 'pylibmc',
-        'namespace': 'foody'
-    },
-    'locale': {'subdomain': True, 'query_param': 'lang'},
     # 'cache': {
     #     'enabled': True,
-    #     'adapter': 'file',
-    #     'version': '20160303075532',
-    #     'path': pj(BASE_DIR, 'tml/cache')
-    #    # 'path': pj(os.path.dirname(BASE_DIR), 'tests/fixtures/snapshot.tar.gz')
+    #     'adapter': 'memcached',
+    #     'backend': 'pylibmc',
+    #     'namespace': 'foody'
     # },
+    'locale': {'subdomain': True, 'query_param': 'lang'},
+    'cache': {
+        'enabled': True,
+        'adapter': 'file',
+        'version': '20160312152203',
+        'path': pj(BASE_DIR, 'tml/cache.test')
+       # 'path': pj(os.path.dirname(BASE_DIR), 'tests/fixtures/snapshot.tar.gz')
+    },
     'agent': {
         'enabled': True,
         'type':    'agent',
+        'host': 'https://tools.translationexchange.com/agent/staging/agent.min.js',
         'cache':   86400  # timeout every 24 hours
     },
     #'data_preprocessors': ('tml.tools.list.preprocess_lists',),
