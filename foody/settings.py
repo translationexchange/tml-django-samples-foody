@@ -51,7 +51,6 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django_tml.middleware.TmlControllerMiddleware',
-    'django_tml.middleware.InjectAgentMiddleware'
 ]
 
 ROOT_URLCONF = 'foody.urls'
@@ -149,7 +148,8 @@ TML = {
         'enabled': True,
         'type':    'agent',
         'host': 'https://tools.translationexchange.com/agent/staging/agent.min.js',
-        'cache':   86400  # timeout every 24 hours
+        'cache':   86400,  # timeout every 24 hours
+        'force_injection': False
     },
     #'data_preprocessors': ('tml.tools.list.preprocess_lists',),
     'env_generators': ('tml.tools.viewing_user.get_viewing_user',),
