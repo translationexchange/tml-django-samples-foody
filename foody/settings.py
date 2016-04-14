@@ -130,19 +130,19 @@ TML = {
         'path': 'https://staging-api.translationexchange.com',
         'cdn_path': 'http://trex-snapshots.s3-us-west-1.amazonaws.com'},
     'monkeypatch': True,
-    'cache': {
-        'enabled': True,
-        'adapter': 'djcache',
-        'backend': 'django.core.cache.backends.memcached.MemcachedCache',
-        'namespace': 'foody'
-    },
     # 'cache': {
     #     'enabled': True,
-    #     'adapter': 'memcached',
-    #     'backend': 'pylibmc',
+    #     'adapter': 'djcache',
+    #     'backend': 'django.core.cache.backends.memcached.MemcachedCache',
     #     'namespace': 'foody'
     # },
-    'locale': {'subdomain': True, 'query_param': 'lang'},
+    'cache': {
+        'enabled': True,
+        'adapter': 'memcached',
+        'backend': 'pylibmc',
+        'namespace': 'foody'
+    },
+    'locale': {'subdomain': True, 'query_param': 'locale'},
     # 'cache': {
     #     'enabled': True,
     #     'adapter': 'file',
